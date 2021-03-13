@@ -4,22 +4,22 @@ function Account(number, holder){
   this.holder=holder;
   this.transactions=[];
 }
-Account.prototype.withdraw=function(){
-  if (this.transactions.amount > 0) {
-    return true;
-  }
-  else {
+Account.prototype.withdraw=function(amount){
+  if (amount <= 0 || !Number.isInteger(amount)) {
     return false;
   }
+  var newTransaction = new Transaction('withdraw',amount);
+  this.transactions.push(newTransaction);
+  return true;
 }
 
-Account.prototype.deposit=function(){
-  if (this.transactions.amount > 0){
-    return true;
-  }
-  else{
+Account.prototype.deposit=function(amount){
+  if (amount <= 0 || !Number.isInteger(amount)){
     return false;
   }
+  var newTransaction = new Transaction ('deposit',amount);
+  this.transactions.push(newTransaction);
+  return true;
 }
 
 Account.prototype.getBalance= function(){
@@ -27,6 +27,16 @@ Account.prototype.getBalance= function(){
     return 0;
   }
   else{
-    return this.getBalance;
+    var accountBalance=0;
+    for (i=0; i<this.transactions.length ; i++){
+      var thisTransactionAmount = this.transactions[i].amount;
+      var thisTransactionType = this.transactions[i].type;
+      if (thisTransactionType==='deposit'){
+        accountBalance += thisTransactionAmount;
+      }else {
+        accountBalance -= thisTransactionAmount;
+      }
+    }
+    return accountBalance;
   }
 }
