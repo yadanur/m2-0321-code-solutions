@@ -3,10 +3,10 @@ var timeOutID;
 timeOutID = window.setInterval(counter, 1000);
 
 function counter(){
-  document.getElementById('message').innerHTML = i;
+  document.getElementById('message').textContent = i;
   i--;
   if (i<0){
     clearInterval(timeOutID);
-    document.getElementById('message').innerHTML = "~Earth Beeeelooowww Us~";
+    document.getElementById('message').textContent = "~Earth Beeeelooowww Us~";
   }
 }
