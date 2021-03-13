@@ -2,6 +2,7 @@ var i=3;
 var timeOutID;
 timeOutID = window.setInterval(counter, 1000);
 
+//counter function
 function counter(){
   document.getElementById('message').innerHTML = i;
   i--;
