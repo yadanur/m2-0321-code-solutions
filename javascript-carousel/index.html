@@ -11,6 +11,39 @@
 </head>
 <body>
 
-  <script src="main.js"></script>
+
+<div class="container">
+  <!--Pictures-->
+  <div class="images">
+  <img  src="images/001.png">
+  </div>
+  <div class="images">
+    <img src="images/004.png">
+  </div>
+  <div class="images">
+    <img src="images/007.png">
+  </div>
+  <div class="images">
+    <img src="images/025.png">
+  </div>
+  <div class="images">
+    <img src="images/039.png">
+  </div>
+  <!--Navigation buttons-->
+  <a class="previous" onclick="navigationDisplay(-1)">&#10094;</a>
+  <a class="next" onclick="navigationDisplay(1)">&#10095;</a>
+
+  <!--Dots to navigate-->
+  <div class="dots-container">
+      <span class="dots" onclick="dotDisplay(0)"></span>
+      <span class="dots" onclick="dotDisplay(1)"></span>
+      <span class="dots" onclick="dotDisplay(2)"></span>
+      <span class="dots" onclick="dotDisplay(3)"></span>
+      <span class="dots" onclick="dotDisplay(4)"></span>
+  </div>
+
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
