@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
 
-let nextId = 1;
-const grades = {};
+// let nextId = 2;
+const grades = {
+  1: {
+    name: 'Brendan Eich',
+    course: 'JavaScript',
+    score: 100
+  }
+};
 
-app.get('api/grades', function (req, res) {
+app.get('/api/grades', function (req, res) {
   const gradesArray = [];
   for (const property in grades) {
     gradesArray.push(grades[property]);
@@ -19,14 +25,17 @@ app.post('/api/grades', function (req, res) {
   for (const property in grades) {
     gradesArray.push(grades[property]);
   }
-  const name = req.params.name;
-  const course = req.params.course;
-  const score = req.params.score;
-  gradesArray[nextId][name] = name;
-  gradesArray[nextId][course] = course;
-  gradesArray[nextId][score] = score;
+  /*
+  const addName = req.params.name;
+  const addCourse = req.params.course;
+  const addScore = req.params.score;
+  gradesArray[nextId][name] = addName;
+  gradesArray[nextId][course] = addCourse;
+  gradesArray[nextId][score] = addScore;
   nextId++;
+  */
   res.sendStatus();
 });
 
-app.listen(2000);
+// eslint-disable-next-line no-console
+app.listen(3000, () => console.log('listening 3000'));
