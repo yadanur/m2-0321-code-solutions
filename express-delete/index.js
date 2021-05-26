@@ -30,15 +30,13 @@ app.get('/api/grades', function (req, res) {
   res.json(gradesArray);
 });
 
-app.delete('api/grades/:id', function (req, res) {
-  res.send('got a Delete request');
-  const id = req.params.id;
-  const gradesArray = [];
-  for (const property in grades) {
-    gradesArray.push(grades[property]);
-  }
-  gradesArray.splice(id, 1);
-  res.sendStatus();
+app.delete('/api/grades/:id', function (req, res) {
+  const id = parseInt(req.params.id);
+  delete grades[id];
+  res.sendStatus(204);
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  // eslint-disable-next-line no-console
+  console.log('Listening port 3000');
+});
